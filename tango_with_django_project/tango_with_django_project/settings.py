@@ -14,23 +14,20 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR = os.path.join(BASE_DIR,'static')
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-print(__file__)
-print(os.path.dirname(__file__))
-print(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6al%4=)*t*-8^%3b*p&8c$8vo92epk)^ot5^o*i%d*si!76$5b'
+SECRET_KEY = 'b6&44st@_e4ybjcd#oghl+923#!(vy975ccv#32(64hf#xef4e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
