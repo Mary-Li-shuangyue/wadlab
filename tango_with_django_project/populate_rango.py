@@ -13,7 +13,7 @@ def populate():
 
     python_pages = [
         {"title": "Official Python ~Tutorial",
-         "url": "http://docs.python.org/2/tutorial/"},
+        "url": "http://docs.python.org/2/tutorial/"},
         {"title": "How to think like a computer scientist",
          "url": "http://www.greenteapress.com/thinkpython/"},
         {"title": "Learn Python in 10 minutes",
