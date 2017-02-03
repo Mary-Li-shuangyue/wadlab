@@ -1,6 +1,0 @@
-count(*),Status
-3,lecturer
-3,professor
-1,"research assistant"
-1,"research student"
-1,"senior lecturer"
