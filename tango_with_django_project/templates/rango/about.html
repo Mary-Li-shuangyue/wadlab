@@ -1,5 +1,7 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
+
+
 {% block title_block %}
 	About
 {% endblock %}
@@ -12,15 +14,12 @@
 		
 		<h4>visits : {{ visits }}</h4>
 		
-		<div>
-			<img src="{% static "images/cat.jpg " %}"
-				alt="Picture of rango" />
-		</div>
+
+			<img src="{% static "images/cat.jpg" %}" alt="Picture of rango" />
 		
 		
-		<div>
-			<img src = "{{MEDIA_URL}}cat.jpg" 
+
+			<img src="{{MEDIA_URL}}cat.jpg" 
 				alt = "Picture of a cute cat" />
-		</div>
 		
 {% endblock %}
