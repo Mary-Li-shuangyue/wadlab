@@ -1,10 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+#from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
 from rango.forms import CategoryForm
 from rango.forms import PageForm
 from rango.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+
+
 
 
 def index(request):
@@ -74,6 +79,7 @@ def add_page(request, category_name_slug):
     context_dict = {'form':form,'category':category}
     return render(request, 'rango/add_page.html', context_dict)
 
+
 def register(request):
     #a boolean value for telling the template if the registration was successful.
     #set to false initially, change to true when registration succeeds.
@@ -121,8 +127,28 @@ def register(request):
 
 
 
+def user_login(request):
 
+    if request.method == 'POST':
 
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password= password )
+
+        if user:
+            if user.is_active:
+
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Your Rango account is disabled.")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+
+    else:
+        return render(request, 'rango/login.html', {})
 
 
 
