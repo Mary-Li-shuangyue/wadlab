@@ -32,7 +32,11 @@
 				<li><a href="{% url 'login' %}">Sign In</a></li>
 				<li><a href="{% url 'register' %}">Sign Up</a></li>
 			{% endif %}
+				{% if user.is_authenticated %}
 				<li><a href="{% url 'add_category' %}">Add New Category</a></li>
+				{% else %}
+				Please Login to add new category 
+				{% endif %}
 				<li><a href="{% url 'about' %}">About</a></li>
 				<li><a href="{% url 'index' %}">Index</a></li>
 			</ul>
