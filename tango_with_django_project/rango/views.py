@@ -11,6 +11,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from datetime import datetime
+from registration.backends.simple.views import RegistrationView
+
 
 
 def index(request):
@@ -251,7 +253,9 @@ def visitor_cookie_handler(request):
 
     request.session['visits'] = visits
 
-
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return '/rango/'
 
 
 
