@@ -19,7 +19,7 @@ from django.conf.urls import include
 from rango import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from registration.backends.simple.views import RegistrationView
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
