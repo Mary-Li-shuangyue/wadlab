@@ -27,14 +27,14 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'rango:index' %}">Home</a>
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'rango:about' %}">About</a>
+            <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
         {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'rango:add_category' %}">Add a New Category</a>
+              <a class="nav-link" href="{% url 'add_category' %}">Add a New Category</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'auth_logout' %}?next=/rango/">Logout</a>
