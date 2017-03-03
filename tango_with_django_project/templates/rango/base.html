@@ -1,50 +1,58 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-{% load rango_template_tags %}
-
-<html>
-
+{% block title_block %}
+	Index
+{% endblock %}
+{% block body_block %}
 	
-	<head>
-		<title>
-			Rango - 
-				{% block title_block %}
-					How to Tango with Django!
-				{% endblock %}
-		</title>
-	</head>
-	<body>
-	
-	
-			<div>
-		{% block body_block %}
-		{% endblock %}
-		</div>
-		<hr />
+	<h1>Rango says...</h1>       
+		{% if user.is_authenticated %}
+			howdy{{ user.username }}!
+		{% else %}
+			hey there partner!
+		{% endif %}
 		
-		<div>
-			<ul>
-			{% if user.is_authenticated %}
-				<li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-				<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
-			{% else %}
-				<li><a href="{% url 'auth_login' %}">Sign In</a></li>
-				<li><a href="{% url 'registration_register' %}">Sign Up</a></li>
-			{% endif %}
-				{% if user.is_authenticated %}
-				<li><a href="{% url 'add_category' %}">Add New Category</a></li>
-				{% else %}
-				Please Login to add new category 
-				{% endif %}
-				<li><a href="{% url 'about' %}">About</a></li>
-				<li><a href="{% url 'index' %}">Index</a></li>
-			</ul>
-		</div>	
+		
+		
+		
+	
+	<p> visits: {{ visits }}</p>
+	<h3>Most Liked Categories</h3>
+	
 	<div>
-	{% block sidebar_block %}
-		{% get_category_list category %}
-	{% endblock %}
-	</div>		
-	</body>
-</html>
+		{% if categories %}
+		<ul>
+			{% for category in categories %}
+				<li>
+				<a href = "{% url 'show_category' category.slug %}">{{ category.name }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<strong>There are no categories present. </strong>
+		{% endif %}
+	</div>
+	
+	<h3>Most Viewed Pages </h3>
+	
+	<div>
+		{% if pages %}
+		<ul>
+			{% for page in pages %}
+				<li>
+				<a href="{{ page.url }}">{{ page.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<strong>There are no pages present. </strong>
+		{% endif %}
+	</div>
+	
+	
+	<div>
+	
+		<img src="{% static "images/rango.jpg " %}"
+			alt="Picture of Rango" />
+	</div>
+{% endblock %}
